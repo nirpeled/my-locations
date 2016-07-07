@@ -1,0 +1,31 @@
+/*
+-----------------------------------------------------
+HEADER
+-----------------------------------------------------
+*/
+
+body > header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $header-height;
+    background: $white;
+
+    .logo {
+        font-size: 40px;
+        font-weight: 100;
+        color: $blue;
+        line-height: $header-height;
+        @include center-absolute();
+
+        @include low-resolution {
+            font-size: 30px;
+        }
+
+    }
+
+    + main {
+        padding-top: $header-height;
+    }
+}
