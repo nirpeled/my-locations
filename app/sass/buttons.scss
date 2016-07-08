@@ -53,6 +53,15 @@ BUTTONS
     ----------------------------------------------------
     */
 
+    &.btn-warning {
+        background-color: $red;
+        border-color: $red-dark;
+
+        &:hover {
+            background-color: $red-dark;
+        }
+    }
+
     &.disabled {
         background: $gray;
         color: $white;

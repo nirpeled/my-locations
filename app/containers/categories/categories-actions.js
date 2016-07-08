@@ -17,3 +17,14 @@ export function add(category) {
     return _.assign({type: categoriesConstants.CATEGORIES_ADD}, category);
 
 }
+
+export function deleteCategory(id) {
+
+    helpers.logger('[CategoriesActions] deleteCategory');
+
+    return {
+        type: categoriesConstants.CATEGORIES_DELETE,
+        id
+    }
+
+}

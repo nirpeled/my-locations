@@ -74,6 +74,18 @@ var CategoriesContainer = React.createClass({
 
     },
 
+    handleDelete: function(id) {
+
+        helpers.logger('[CategoriesContainer] handleDelete');
+
+        var props = this.props;
+
+        props.dispatch(categoriesActions.deleteCategory(id));
+
+        this.context.router.push('/categories');
+
+    },
+
     render: function () {
 
         helpers.logger('[CategoriesContainer] render');
@@ -81,25 +93,12 @@ var CategoriesContainer = React.createClass({
         var props = this.props,
             state = this.state,
             items = _.get(props, 'categories.items'),
+            itemId = _.get(props, 'params.id'),
+            item = (itemId && _.size(items)) ? _.find(items, ['id', parseInt(itemId)]) || {} : {},
             location = _.get(props, 'location.pathname'),
-            isNew = _.endsWith(location, '/new');
-
-        if (isNew) {
-            return (
-                <section className="box-row box-categories">
-
-                    <div className="modal">
-
-                        <h1>Add a new category</h1>
-                        <input type="text" value={state.newCategoryName} name="newCategoryName" className={classNames('inp inp-large full-width', {'with-error': (state.newCategoryError === 'newCategoryName')})} placeholder="Category name" onChange={this.handleInputChange} />
-                        <button className="btn full-width" onClick={this.handleSave}>Save</button>
-                        <Link to="/categories" className="without-style">Cancel</Link>
-
-                    </div>
-                    
-                </section>
-            );
-        }
+            isNew = _.endsWith(location, '/new'),
+            isDelete = _.endsWith(location, '/delete'),
+            isEdit = _.endsWith(location, '/edit');
 
         if (state.isLoading) {
             return (
@@ -109,6 +108,56 @@ var CategoriesContainer = React.createClass({
                         <h1>Loading...</h1>
                     </div>
 
+                </section>
+            );
+        }
+
+        if (isNew) {
+            return (
+                <section className="box-row box-categories">
+
+                    <div className="modal">
+
+                        <h1>Add a new category</h1>
+                        <input type="text" value={state.newCategoryName} name="newCategoryName" className={classNames('inp inp-large full-width', {'with-error': (state.newCategoryError === 'newCategoryName')})} placeholder="Category name" onChange={this.handleInputChange} />
+                        <button className="btn full-width" onClick={this.handleSave}><i className={iconsConstants.ADD} /> Add</button>
+                        <Link to="/categories" className="without-style">Cancel</Link>
+
+                    </div>
+                    
+                </section>
+            );
+        }
+
+        if (isDelete) {
+            return (
+                <section className="box-row box-categories">
+
+                    <div className="modal">
+
+                        <h1>Delete <strong>{item.name}</strong>?</h1>
+                        <button className="btn btn-warning full-width" onClick={() => this.handleDelete(item.id)}><i className={iconsConstants.DELETE} /> Delete</button>
+                        <Link to="/categories" className="without-style">Cancel</Link>
+
+                    </div>
+                    
+                </section>
+            );
+        }
+
+        if (isEdit) {
+            return (
+                <section className="box-row box-categories">
+
+                    <div className="modal">
+
+                        <h1>Edit</h1>
+                        <input type="text" value={item.name} name="newCategoryName" className={classNames('inp inp-large full-width', {'with-error': (state.newCategoryError === 'newCategoryName')})} placeholder="Category name" onChange={this.handleInputChange} />
+                        <button className="btn full-width" onClick={this.handleSave}><i className={iconsConstants.SAVE} /> Save</button>
+                        <Link to="/categories" className="without-style">Cancel</Link>
+
+                    </div>
+                    
                 </section>
             );
         }
@@ -134,9 +183,9 @@ var CategoriesContainer = React.createClass({
                     {
                         _.map(items, (category, index) => {
                             return <li key={category.id}>
-                                <span className="action delete hint--right" data-hint="Delete"><i className={iconsConstants.DELETE} /></span>
+                                <Link to={'/categories/' + category.id + '/delete'} className="action delete hint--right" data-hint="Delete"><i className={iconsConstants.DELETE} /></Link>
+                                <Link to={'/categories/' + category.id + '/edit'} className="action edit hint--left" data-hint="Edit"><i className={iconsConstants.EDIT} /></Link>
                                 <span className="name">{category.name}</span>
-                                <span className="action edit hint--left" data-hint="Edit"><i className={iconsConstants.EDIT} /></span>
                             </li>
                         })
                     }

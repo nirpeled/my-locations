@@ -11,6 +11,8 @@ export default (
         <IndexRoute component={HomepageContainer}/>
         <Route path="categories" component={CategoriesContainer}>
             <Route path="new" component={CategoriesContainer}/>
+            <Route path=":id/delete" component={CategoriesContainer}/>
+            <Route path=":id/edit" component={CategoriesContainer}/>
         </Route>
         <Route path="locations" component={LocationsContainer}/>
     </Route>

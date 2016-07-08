@@ -32,11 +32,20 @@ export default function categories(state = {}, action = {}) {
             return _.assign({}, state, {items: data});
 
         case categoriesConstants.CATEGORIES_EDIT:
-        case categoriesConstants.CATEGORIES_DELETE:
 
             helpers.logger('[CategoriesReducer] ' + action.type);
 
             return _.assign({}, state, action);
+
+        case categoriesConstants.CATEGORIES_DELETE:
+
+            helpers.logger('[CategoriesReducer] ' + action.type);
+
+            data = _.filter(state.items, function(item) { return item.id !== action.id; });
+
+            helpers.localStorage.set('categories', data);
+
+            return _.assign({}, state, {items: data});
 
         default:
 
