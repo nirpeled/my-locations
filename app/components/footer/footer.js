@@ -15,8 +15,8 @@ var Footer = React.createClass({
         return (
             <footer>
                 <nav>
-                    <Link to="categories" className="selected"><i className={iconsConstants.TAG} /> Categories</Link>
-                    <Link to="categories"><i className={iconsConstants.MAP} /> Locations</Link>
+                    <Link to="/"><i className={iconsConstants.TAG} /> Categories</Link>
+                    <Link to="/locations"><i className={iconsConstants.MAP} /> Locations</Link>
                 </nav>
             </footer>
         );

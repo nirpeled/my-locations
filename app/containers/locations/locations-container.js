@@ -4,18 +4,18 @@ import classNames from 'classnames';
 import helpers from '../../helpers/helpers.js';
 import iconsConstants from '../../constants/icons-constants.js';
 
-var CategoriesContainer = React.createClass({
+var LocationsContainer = React.createClass({
 
     render: function () {
 
         return (
-            <section className="box-row box-categories">
+            <section className="box-row box-locations">
 
                 <ul className="table">
 
                     {
-                        _.times(15, (index) => {
-                            return <li key={index}>Category #{index + 1}</li>
+                        _.times(20, (index) => {
+                            return <li key={index}>Location #{index + 1}</li>
                         })
                     }
 
@@ -26,4 +26,4 @@ var CategoriesContainer = React.createClass({
     }
 });
 
-export default CategoriesContainer;
+export default LocationsContainer;

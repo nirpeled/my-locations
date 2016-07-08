@@ -29,6 +29,11 @@ body > footer {
             box-sizing: border-box;
             cursor: pointer;
 
+            &:active,
+            &:visited {
+                color: $white;
+            }
+
             &:first-child {
                 border-right: 1px solid $white;
             }
