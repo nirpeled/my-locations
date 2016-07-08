@@ -35,7 +35,13 @@ export default function categories(state = {}, action = {}) {
 
             helpers.logger('[CategoriesReducer] ' + action.type);
 
-            return _.assign({}, state, action);
+            data = _.union(state.items);
+
+            _.find(data, ['id', action.id]).name = action.name;
+
+            helpers.localStorage.set('categories', data);
+
+            return _.assign({}, state, {items: data});
 
         case categoriesConstants.CATEGORIES_DELETE:
 

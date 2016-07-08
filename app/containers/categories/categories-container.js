@@ -21,8 +21,8 @@ var CategoriesContainer = React.createClass({
 
         return {
             isLoading: true,
-            newCategoryName: '',
-            newCategoryError: false
+            formName: '',
+            formError: false
         }
 
     },
@@ -39,35 +39,37 @@ var CategoriesContainer = React.createClass({
 
     handleInputChange: function (e) {
 
-        helpers.logger('[CategoriesContainer] handleInputChange');
-
         var key = e.target.name,
             value = e.target.value;
 
         this.setState({
             [key]: value,
-            newCategoryError: false
+            formError: false
         });
 
     },
 
-    handleSave: function() {
+    handleSave: function(id) {
 
         helpers.logger('[CategoriesContainer] handleSave');
 
         var props = this.props,
             state = this.state;
 
-        if (!state.newCategoryName) {
-            this.setState({newCategoryError: 'newCategoryName'});
+        if (!state.formName) {
+            this.setState({formError: 'formName'});
             return;
         }
 
-        props.dispatch(categoriesActions.add({name: state.newCategoryName}));
-
+        if (id) {
+            props.dispatch(categoriesActions.editCategory({id, name: state.formName}));
+        } else {
+            props.dispatch(categoriesActions.addCategory({name: state.formName}));
+        }
+        
         this.setState({
-            newCategoryName: '',
-            newCategoryError: false
+            formName: '',
+            formError: false
         }, () => {
             this.context.router.push('/categories');
         });
@@ -119,8 +121,25 @@ var CategoriesContainer = React.createClass({
                     <div className="modal">
 
                         <h1>Add a new category</h1>
-                        <input type="text" value={state.newCategoryName} name="newCategoryName" className={classNames('inp inp-large full-width', {'with-error': (state.newCategoryError === 'newCategoryName')})} placeholder="Category name" onChange={this.handleInputChange} />
-                        <button className="btn full-width" onClick={this.handleSave}><i className={iconsConstants.ADD} /> Add</button>
+                        <input type="text" value={state.formName} name="formName" className={classNames('inp inp-large full-width', {'with-error': (state.formError === 'formName')})} placeholder="Category name" onChange={this.handleInputChange} />
+                        <button className="btn full-width" onClick={() => this.handleSave(null)}><i className={iconsConstants.ADD} /> Add</button>
+                        <Link to="/categories" className="without-style">Cancel</Link>
+
+                    </div>
+                    
+                </section>
+            );
+        }
+
+        if (isEdit) {
+            return (
+                <section className="box-row box-categories">
+
+                    <div className="modal">
+
+                        <h1>Edit a category</h1>
+                        <input type="text" value={state.formName || item.name} name="formName" className={classNames('inp inp-large full-width', {'with-error': (state.formError === 'formName')})} placeholder={item.name} onChange={this.handleInputChange} />
+                        <button className="btn full-width" onClick={() => this.handleSave(item.id)}><i className={iconsConstants.SAVE} /> Save</button>
                         <Link to="/categories" className="without-style">Cancel</Link>
 
                     </div>
@@ -137,23 +156,6 @@ var CategoriesContainer = React.createClass({
 
                         <h1>Delete <strong>{item.name}</strong>?</h1>
                         <button className="btn btn-warning full-width" onClick={() => this.handleDelete(item.id)}><i className={iconsConstants.DELETE} /> Delete</button>
-                        <Link to="/categories" className="without-style">Cancel</Link>
-
-                    </div>
-                    
-                </section>
-            );
-        }
-
-        if (isEdit) {
-            return (
-                <section className="box-row box-categories">
-
-                    <div className="modal">
-
-                        <h1>Edit</h1>
-                        <input type="text" value={item.name} name="newCategoryName" className={classNames('inp inp-large full-width', {'with-error': (state.newCategoryError === 'newCategoryName')})} placeholder="Category name" onChange={this.handleInputChange} />
-                        <button className="btn full-width" onClick={this.handleSave}><i className={iconsConstants.SAVE} /> Save</button>
                         <Link to="/categories" className="without-style">Cancel</Link>
 
                     </div>

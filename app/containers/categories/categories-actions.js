@@ -10,14 +10,21 @@ export function fetch() {
 
 }
 
-export function add(category) {
+export function addCategory(category) {
 
-    helpers.logger('[CategoriesActions] add');
+    helpers.logger('[CategoriesActions] addCategory');
 
     return _.assign({type: categoriesConstants.CATEGORIES_ADD}, category);
 
 }
 
+export function editCategory(category) {
+
+    helpers.logger('[CategoriesActions] editCategory');
+
+    return _.assign({type: categoriesConstants.CATEGORIES_EDIT}, category);
+
+}
 export function deleteCategory(id) {
 
     helpers.logger('[CategoriesActions] deleteCategory');
