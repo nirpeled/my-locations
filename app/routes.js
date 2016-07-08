@@ -9,7 +9,9 @@ import LocationsContainer from './containers/locations/locations-container.js';
 export default (
     <Route path="/" component={RootContainer}>
         <IndexRoute component={HomepageContainer}/>
-        <Route path="categories" component={CategoriesContainer}/>
+        <Route path="categories" component={CategoriesContainer}>
+            <Route path="new" component={CategoriesContainer}/>
+        </Route>
         <Route path="locations" component={LocationsContainer}/>
     </Route>
 );

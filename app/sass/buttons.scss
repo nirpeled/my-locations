@@ -37,10 +37,15 @@ BUTTONS
     */
 
     &.btn-large {
-        font-size: 18px;
+        font-size: 15px;
         line-height: 22px;
+        font-weight: 200;
         padding: 10px 30px;
         box-sizing: border-box;
+    }
+
+    &.full-width {
+        width: 100%;
     }
 
     /*

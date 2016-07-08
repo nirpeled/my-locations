@@ -26,4 +26,35 @@ body > header {
         }
 
     }
+
+    .actions {
+        position: absolute;
+        top: 50%;
+        right: 50px;
+        transform: translateY(-50%);
+        @include clearfix();
+
+        > li {
+            float: left;
+            color: $blue;
+
+            > a {
+                font-size: 20px;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                transition: all 300ms ease;
+                display: inline-block;
+
+                &:hover {
+                    background: $blue;
+                    color: $white;
+                }
+
+                > i {
+                    @include center-absolute();
+                }
+            }
+        }
+    }
 }

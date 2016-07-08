@@ -10,6 +10,8 @@ var HomepageContainer = React.createClass({
 
     render: function () {
 
+        helpers.logger('[HomepageContainer] render');
+
         return (
             <section className="box-row box-homepage">
 

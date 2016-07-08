@@ -30,7 +30,7 @@ var RootContainer = React.createClass({
 
                 <body>
 
-                    <Header/>
+                    <Header {...this.props} />
                 
                     <main>
                         {this.props.children}

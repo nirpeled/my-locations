@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import homepage from './homepage-reducer.js';
+import categories from '../categories/categories-reducer.js';
 
 const rootReducer = combineReducers({
-    homepage
+    categories
 });
 
 export default rootReducer;
