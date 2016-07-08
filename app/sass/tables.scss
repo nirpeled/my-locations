@@ -8,6 +8,7 @@ TABLES
     width: 100%;
 
     > li {
+        position: relative;
         margin: 0;
         padding: 30px;
         text-align: center;
@@ -17,6 +18,50 @@ TABLES
 
         &:last-child {
             border-bottom: none;
+        }
+
+        &:hover {
+
+            > .action {
+                display: block;
+            }
+        }
+
+        > .action {
+            font-size: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            transition: all 300ms ease;
+            display: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+
+            &.delete {
+                left: 50px;
+            }
+
+            &.edit {
+                right: 50px;
+            }
+
+            &:hover {
+                color: $white;
+
+                &.delete {
+                    background: $red;
+                }
+
+                &.edit {
+                    background: $blue;
+                }
+            }
+
+            > i {
+                @include center-absolute();
+            }
         }
     }
 }

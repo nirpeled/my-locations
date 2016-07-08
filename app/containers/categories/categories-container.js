@@ -20,6 +20,7 @@ var CategoriesContainer = React.createClass({
     getInitialState: function() {
 
         return {
+            isLoading: true,
             newCategoryName: '',
             newCategoryError: false
         }
@@ -31,6 +32,8 @@ var CategoriesContainer = React.createClass({
         var props = this.props;
 
         props.dispatch(categoriesActions.fetch());
+
+        this.setState({isLoading: false});
 
     },
 
@@ -98,6 +101,18 @@ var CategoriesContainer = React.createClass({
             );
         }
 
+        if (state.isLoading) {
+            return (
+                <section className="box-row box-categories">
+
+                    <div className="modal">
+                        <h1>Loading...</h1>
+                    </div>
+
+                </section>
+            );
+        }
+
         if (_.isEmpty(items)) {
             return (
                 <section className="box-row box-categories">
@@ -118,7 +133,11 @@ var CategoriesContainer = React.createClass({
 
                     {
                         _.map(items, (category, index) => {
-                            return <li key={category.id}>{category.name}</li>
+                            return <li key={category.id}>
+                                <span className="action delete hint--right" data-hint="Delete"><i className={iconsConstants.DELETE} /></span>
+                                <span className="name">{category.name}</span>
+                                <span className="action edit hint--left" data-hint="Edit"><i className={iconsConstants.EDIT} /></span>
+                            </li>
                         })
                     }
 
