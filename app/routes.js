@@ -14,6 +14,10 @@ export default (
             <Route path=":id/delete" component={CategoriesContainer}/>
             <Route path=":id/edit" component={CategoriesContainer}/>
         </Route>
-        <Route path="locations" component={LocationsContainer}/>
+        <Route path="locations" component={LocationsContainer}>
+            <Route path="new" component={LocationsContainer}/>
+            <Route path=":id/delete" component={LocationsContainer}/>
+            <Route path=":id/edit" component={LocationsContainer}/>
+        </Route>
     </Route>
 );
