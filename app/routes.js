@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, Link, IndexRoute } from 'react-router';
 
 import RootContainer from './containers/root/root-container.js';
-import Homepage from './components/homepage/homepage.js';
+import CategoriesContainer from './containers/categories/categories-container.js';
 
 export default (
     <Route path="/" component={RootContainer}>
-        <IndexRoute component={Homepage}/>
+        <IndexRoute component={CategoriesContainer}/>
     </Route>
 );

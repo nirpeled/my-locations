@@ -1,0 +1,30 @@
+/*
+----------------------------------------------------
+TABLES
+----------------------------------------------------
+*/
+
+.table {
+    width: 100%;
+
+    > li {
+        margin: 0;
+        padding: 30px;
+        text-align: center;
+        font-size: 16px;
+        text-transform: uppercase;
+        line-height: 50px;
+        border-bottom: 1px solid $table-border-color;
+
+        &:hover {
+            color: $white;
+            cursor: pointer;
+            background-color: $blue-light;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+

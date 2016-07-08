@@ -9,9 +9,15 @@ var Homepage = React.createClass({
     render: function () {
 
         return (
-            <section className="box-row box-homepage">
+            <section className="box-row box-categories">
 
-                <h1>Hello World</h1>
+                <ul className="table">
+
+                    <li>Category #1</li>
+                    <li>Category #2</li>
+                    <li>Category #3</li>
+
+                </ul>
                 
             </section>
         );

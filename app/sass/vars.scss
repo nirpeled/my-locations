@@ -12,8 +12,8 @@ $gray-light:                    #EFEFEF !default;
 $gray-dark:                     #4F4F4F !default;
 
 $blue:                          #3B5998 !default;
-$blue-light:                    lighten($blue, 10%);
-$blue-dark:                     darken($blue, 10%);
+$blue-light:                    lighten($blue, 20%);
+$blue-dark:                     darken($blue, 20%);
 
 $red:                           #C85B5B !default;
 $yellow:                        #FCF488 !default;
@@ -35,6 +35,8 @@ $bg-body:                       $gray-light;
 $input-text-color:              $blue;
 $input-border-color:            $blue;
 $input-color-error:             $red;
+
+$table-border-color:            #dcdcdc;
 
 /*
 ----------------------------------------------------

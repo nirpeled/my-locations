@@ -4,12 +4,14 @@
 @import "mixins";
 @import "global";
 @import "buttons";
-@import "dot";
+@import "tables";
 @import "colors";
 @import "tags";
 @import "forms";
 @import "animations";
 
+// containers
+@import "../containers/categories/categories";
+
 // components
-@import "../components/homepage/homepage";
 @import "../components/header/header";
