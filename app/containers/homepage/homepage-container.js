@@ -6,18 +6,18 @@ import helpers from '../../helpers/helpers.js';
 // constants
 import iconsConstants from '../../constants/icons-constants.js';
 
-var CategoriesContainer = React.createClass({
+var HomepageContainer = React.createClass({
 
     render: function () {
 
         return (
-            <section className="box-row box-categories">
+            <section className="box-row box-homepage">
 
                 <ul className="table">
 
                     {
-                        _.times(15, (index) => {
-                            return <li key={index}>Category #{index + 1}</li>
+                        _.times(1, (index) => {
+                            return <li key={index}>Homepage</li>
                         })
                     }
 
@@ -28,4 +28,4 @@ var CategoriesContainer = React.createClass({
     }
 });
 
-export default CategoriesContainer;
+export default HomepageContainer;

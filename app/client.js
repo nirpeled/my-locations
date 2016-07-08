@@ -7,11 +7,12 @@ import routes from './routes.js';
 import configService from './services/config.js';
 import storeService from './store/store.js';
 
-var history = browserHistory,
+var history,
     store,
     dispatch,
     unlisten;
 
+history = browserHistory;
 configService.init(window.__config);
 storeService.init(window.__state);
 store = storeService.get();

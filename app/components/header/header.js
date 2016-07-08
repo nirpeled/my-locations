@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
+import { Link } from 'react-router';
 import helpers from '../../helpers/helpers.js';
 
 // constants
@@ -13,7 +14,7 @@ var Header = React.createClass({
 
         return (
             <header>
-                <span className="logo"><i className={iconsConstants.MAP} /> myLocations</span>
+                <Link to="/" className="without-style logo"><i className={iconsConstants.MAP} /> myLocations</Link>
             </header>
         );
     }

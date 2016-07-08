@@ -105,12 +105,12 @@ a {
         color: $text-color-hover;
     }
 
-    &.no-style,
-    &.no-style:link,
-    &.no-style:active,
-    &.no-style:focus,
-    &.no-style:hover,
-    &.no-style:visited {
+    &.without-style,
+    &.without-style:link,
+    &.without-style:active,
+    &.without-style:focus,
+    &.without-style:hover,
+    &.without-style:visited {
         text-decoration: none;
         color: inherit;
     }

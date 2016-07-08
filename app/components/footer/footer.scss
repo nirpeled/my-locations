@@ -14,13 +14,13 @@ body > footer {
     z-index: 1000;
 
     nav {
+        color: $white;
         @include clearfix();
 
         a {
             width: 50%;
             float: left;
             display: inline-block;
-            color: $white;
             text-align: center;
             font-weight: 100;
             font-size: 20px;
@@ -28,17 +28,14 @@ body > footer {
             text-decoration: none;
             box-sizing: border-box;
             cursor: pointer;
-
-            &:active,
-            &:visited {
-                color: $white;
-            }
+            transition: all 300ms ease-in;
 
             &:first-child {
                 border-right: 1px solid $white;
             }
 
-            &:hover {
+            &:hover,
+            &.active {
                 background-color: $blue-dark;
                 color: $white;
             }

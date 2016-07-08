@@ -36,12 +36,12 @@ var RootContainer = React.createClass({
                         {this.props.children}
                     </main>
 
+                    <Footer/>
+
                     <script>var __config = null;</script>
                     <script>var __state = null;</script>
                     <script src="/scripts/vendor.js"></script>
                     <script src="/scripts/application.js"></script>
-
-                    <Footer/>
 
                 </body>
 
