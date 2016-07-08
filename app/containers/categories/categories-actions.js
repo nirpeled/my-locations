@@ -25,6 +25,7 @@ export function editCategory(category) {
     return _.assign({type: categoriesConstants.CATEGORIES_EDIT}, category);
 
 }
+
 export function deleteCategory(id) {
 
     helpers.logger('[CategoriesActions] deleteCategory');
@@ -32,6 +33,17 @@ export function deleteCategory(id) {
     return {
         type: categoriesConstants.CATEGORIES_DELETE,
         id
+    }
+
+}
+
+export function setSorting(sorting) {
+
+    helpers.logger('[CategoriesActions] setSorting');
+
+    return {
+        type: categoriesConstants.CATEGORIES_SORTING,
+        sorting
     }
 
 }

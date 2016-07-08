@@ -13,9 +13,9 @@ export default function categories(state = {}, action = {}) {
 
             helpers.logger('[CategoriesReducer] ' + action.type);
 
-            data = helpers.localStorage.get('categories');
-            
-            return _.assign({}, state, {items: data});
+            data = _.assign({items: helpers.localStorage.get('categories')}, helpers.localStorage.get('categories-settings'));
+
+            return _.assign({}, state, data);
 
         case categoriesConstants.CATEGORIES_ADD:
 
@@ -57,6 +57,16 @@ export default function categories(state = {}, action = {}) {
             helpers.localStorage.set('categories', data);
 
             return _.assign({}, state, {items: data});
+
+        case categoriesConstants.CATEGORIES_SORTING:
+
+            helpers.logger('[CategoriesReducer] ' + action.type);
+
+            data = {sorting: action.sorting};
+
+            helpers.localStorage.set('categories-settings', data);
+
+            return _.assign({}, state, data);
 
         default:
 

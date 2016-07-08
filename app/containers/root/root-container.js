@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styles from '../../styles.js';
 
-import Header from '../../components/header/header.js';
+import HeaderContainer from '../header/header-container.js';
 import Footer from '../../components/footer/footer.js';
 
 var RootContainer = React.createClass({
@@ -30,7 +30,7 @@ var RootContainer = React.createClass({
 
                 <body>
 
-                    <Header {...this.props} />
+                    <HeaderContainer {...this.props} />
                 
                     <main>
                         {this.props.children}

@@ -200,8 +200,6 @@ var CategoriesContainer = React.createClass({
     }
 });
 
-export default CategoriesContainer;
-
 function mapStateToProps(state) {
     return {
         categories: _.get(state, 'categories')
