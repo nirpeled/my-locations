@@ -7,12 +7,12 @@ BUTTONS
 .btn {
     background: $blue;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 200;
     color: $white;
     border: 1px solid $blue-dark;
-    padding: 6px 12px;
+    padding: 10px 30px;
     margin: 5px 0;
     cursor: pointer;
     border-radius: 5px;
@@ -20,9 +20,16 @@ BUTTONS
     display: inline-block;
     text-decoration: none;
     transition: background-color .5s ease;
+    text-transform: uppercase;
 
     + .btn {
         margin-left: 5px;
+    }
+
+    &:active,
+    &:visited {
+        text-decoration: none;
+        color: $white;
     }
 
     &:hover {
@@ -35,14 +42,6 @@ BUTTONS
     SIZES
     ----------------------------------------------------
     */
-
-    &.btn-large {
-        font-size: 15px;
-        line-height: 22px;
-        font-weight: 200;
-        padding: 10px 30px;
-        box-sizing: border-box;
-    }
 
     &.full-width {
         width: 100%;

@@ -77,11 +77,12 @@ var CategoriesContainer = React.createClass({
             return (
                 <section className="box-row box-categories">
 
-                    <div className="new">
+                    <div className="modal">
 
+                        <h1>Add a new category</h1>
                         <input type="text" value={state.newCategoryName} name="newCategoryName" className={classNames('inp inp-large full-width', {'with-error': (state.newCategoryError === 'newCategoryName')})} placeholder="Category name" onChange={this.handleInputChange} />
-                        <button className="btn btn-large full-width" onClick={this.handleSave}>Add a new category</button>
-                        <Link to="/categories" className="without-style cancel">Cancel</Link>
+                        <button className="btn full-width" onClick={this.handleSave}>Save</button>
+                        <Link to="/categories" className="without-style">Cancel</Link>
 
                     </div>
                     
@@ -93,9 +94,11 @@ var CategoriesContainer = React.createClass({
             return (
                 <section className="box-row box-categories">
 
-                    <h2>No categories were found</h2>
-                    <Link to="/categories/new" className="btn btn-large">Add a new category</Link>
-
+                    <div className="modal">
+                        <h1>No categories were found</h1>
+                        <Link to="/categories/new" className="btn full-width">Add a new category</Link>
+                    </div>
+                    
                 </section>
             );
         }

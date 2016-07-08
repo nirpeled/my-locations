@@ -21,7 +21,7 @@ var Header = React.createClass({
         return (
             <header>
 
-                <Link to="/" className="without-style logo"><i className={iconsConstants.MAP} /> myLocations</Link>
+                <Link to="/" className="logo"><i className={iconsConstants.MAP} /> myLocations</Link>
 
                 {showActions && <ul className="actions">
                     <li className="hint--bottom" data-hint="Add"><Link to={location + '/new'} className="without-style"><i className={iconsConstants.ADD} /></Link></li>
