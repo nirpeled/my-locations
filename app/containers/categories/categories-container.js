@@ -96,7 +96,7 @@ var CategoriesContainer = React.createClass({
             state = this.state,
             items = _.get(props, 'categories.items'),
             itemId = _.get(props, 'params.id'),
-            item = (itemId && _.size(items)) ? _.find(items, ['id', parseInt(itemId)]) || {} : {},
+            item = _.get(items, [itemId], {}),
             location = _.get(props, 'location.pathname'),
             isNew = _.endsWith(location, '/new'),
             isDelete = _.endsWith(location, '/delete'),
@@ -183,7 +183,7 @@ var CategoriesContainer = React.createClass({
                 <ul className="table">
 
                     {
-                        _.map(items, (category, index) => {
+                        _.map(items, (category) => {
                             return <li key={category.id}>
                                 <Link to={'/categories/' + category.id + '/delete'} className="action delete hint--right" data-hint="Delete"><i className={iconsConstants.DELETE} /></Link>
                                 <Link to={'/categories/' + category.id + '/edit'} className="action edit hint--left" data-hint="Edit"><i className={iconsConstants.EDIT} /></Link>

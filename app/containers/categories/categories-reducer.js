@@ -4,7 +4,8 @@ import categoriesConstants from './categories-constants.js';
 
 export default function categories(state = {}, action = {}) {
 
-    var data;
+    var data,
+        uniqueId;
 
     switch (action.type) {
 
@@ -20,12 +21,14 @@ export default function categories(state = {}, action = {}) {
 
             helpers.logger('[CategoriesReducer] ' + action.type);
 
-            data = _.union(state.items, []);
+            data = _.assign({}, state.items);
 
-            data.push({
-                id: data.length + 1,
+            uniqueId = _.size(data) ? _.max(_.map(data, 'id')) + 1 : 1;
+            
+            data[uniqueId] = {
+                id: uniqueId,
                 name: action.name
-            });
+            };
 
             helpers.localStorage.set('categories', data);
             
@@ -35,9 +38,9 @@ export default function categories(state = {}, action = {}) {
 
             helpers.logger('[CategoriesReducer] ' + action.type);
 
-            data = _.union(state.items);
+            data = _.assign({}, state.items);
 
-            _.find(data, ['id', action.id]).name = action.name;
+            data[action.id].name = action.name;
 
             helpers.localStorage.set('categories', data);
 
@@ -47,7 +50,9 @@ export default function categories(state = {}, action = {}) {
 
             helpers.logger('[CategoriesReducer] ' + action.type);
 
-            data = _.filter(state.items, function(item) { return item.id !== action.id; });
+            data = _.assign({}, state.items);
+
+            delete data[action.id];
 
             helpers.localStorage.set('categories', data);
 
