@@ -1,0 +1,42 @@
+/*
+-----------------------------------------------------
+FOOTER
+-----------------------------------------------------
+*/
+
+body > footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $footer-height;
+    background: $blue;
+    z-index: 1000;
+
+    nav {
+        @include clearfix();
+
+        a {
+            width: 50%;
+            float: left;
+            display: inline-block;
+            color: $white;
+            text-align: center;
+            font-weight: 100;
+            font-size: 20px;
+            line-height: $footer-height;
+            text-decoration: none;
+            box-sizing: border-box;
+            cursor: pointer;
+
+            &:first-child {
+                border-right: 1px solid $white;
+            }
+
+            &:hover {
+                background-color: $blue-dark;
+                color: $white;
+            }
+        }
+    }
+}

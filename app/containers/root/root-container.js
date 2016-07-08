@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import styles from '../../styles.js';
 
 import Header from '../../components/header/header.js';
+import Footer from '../../components/footer/footer.js';
 
 var RootContainer = React.createClass({
 
@@ -39,6 +40,8 @@ var RootContainer = React.createClass({
                     <script>var __state = null;</script>
                     <script src="/scripts/vendor.js"></script>
                     <script src="/scripts/application.js"></script>
+
+                    <Footer/>
 
                 </body>
 

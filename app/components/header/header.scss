@@ -11,6 +11,8 @@ body > header {
     width: 100%;
     height: $header-height;
     background: $white;
+    z-index: 1000;
+    @include box-shadow(0, 5px, 15px, rgba(0, 0, 0, .1));
 
     .logo {
         font-size: 40px;
@@ -23,9 +25,5 @@ body > header {
             font-size: 30px;
         }
 
-    }
-
-    + main {
-        padding-top: $header-height;
     }
 }

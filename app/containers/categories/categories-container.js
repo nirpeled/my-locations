@@ -13,9 +13,11 @@ var Homepage = React.createClass({
 
                 <ul className="table">
 
-                    <li>Category #1</li>
-                    <li>Category #2</li>
-                    <li>Category #3</li>
+                    {
+                        _.times(10, (index) => {
+                            return <li>Category #{index + 1}</li>
+                        })
+                    }
 
                 </ul>
                 
