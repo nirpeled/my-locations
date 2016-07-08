@@ -15,7 +15,7 @@ var RootContainer = React.createClass({
 
                 <head>
 
-                    <title>My Locations</title>
+                    <title>myLocations</title>
                     <link rel="stylesheet" href="/css/application.css" />
                     <meta charSet="utf-8" />
                     <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />

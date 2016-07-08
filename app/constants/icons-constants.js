@@ -19,7 +19,7 @@ export default {
     CHECK: 'fa fa-check',
     CHECKBOX: 'fa fa-square-o',
     CHECKBOX_SELECTED :'fa fa-check-square-o',
-    MAP_MARKER :'fa fa-map-marker',
+    MAP :'fa fa-map-marker',
     CIRCLE: 'fa fa-circle',
     QUESTION_MARK: 'fa fa-question-circle',
     PLUS: 'fa fa-plus',
