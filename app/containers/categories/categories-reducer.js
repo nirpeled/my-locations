@@ -12,7 +12,9 @@ export default function categories(state = {}, action = {}) {
 
             helpers.logger('[CategoriesReducer] ' + action.type);
 
-            return _.assign({}, state, action);
+            data = helpers.localStorage.get('categories');
+            
+            return _.assign({}, state, {items: data});
 
         case categoriesConstants.CATEGORIES_ADD:
 
@@ -25,6 +27,8 @@ export default function categories(state = {}, action = {}) {
                 name: action.name
             });
 
+            helpers.localStorage.set('categories', data);
+            
             return _.assign({}, state, {items: data});
 
         case categoriesConstants.CATEGORIES_EDIT:

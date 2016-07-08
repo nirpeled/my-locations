@@ -26,6 +26,14 @@ var CategoriesContainer = React.createClass({
 
     },
 
+    componentDidMount: function() {
+
+        var props = this.props;
+
+        props.dispatch(categoriesActions.fetch());
+
+    },
+
     handleInputChange: function (e) {
 
         helpers.logger('[CategoriesContainer] handleInputChange');
