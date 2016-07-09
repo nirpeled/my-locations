@@ -70,12 +70,13 @@ var HomepageContainer = React.createClass({
         var props = this.props,
             state = this.state,
             params = _.get(props, 'params', {}),
+            filterByCategory = _.get(props, 'location.query.category'),
             categories = _.get(props, 'categories.items', {}),
             locations = _.get(props, 'locations.items', {}),
             page = _.get(props, 'params.page'),
             isCategories = (page === 'categories'),
             isLocations = (page === 'locations'),
-            items = _.get(props, [page, 'items']),
+            items = filterByCategory ? _.filter(_.get(props, [page, 'items']), ['category', parseInt(filterByCategory)]) : _.get(props, [page, 'items']),
             sorting = _.get(props, [page, 'sorting']),
             sortedItems = _.orderBy(items, 'name', sorting),
             actionProps = {},
@@ -138,7 +139,8 @@ var HomepageContainer = React.createClass({
 
                                 return (
                                     <ul key={category.id} className="table">
-                                        <li className="category">{category.name}</li>
+
+                                        {!_.isEmpty(_.filter(sortedItems, ['category', category.id])) && <li className="category">{category.name}</li>}
 
                                         {
                                             _.map(_.filter(sortedItems, ['category', category.id]), (item, index) => {
@@ -172,6 +174,7 @@ var HomepageContainer = React.createClass({
                                     <Link to={'/' + page + '/' + item.id + '/delete'} className="action delete hint--right" data-hint="Delete"><i className={iconsConstants.DELETE} /></Link>
                                     <Link to={'/' + page + '/' + item.id + '/edit'} className="action edit hint--left" data-hint="Edit"><i className={iconsConstants.EDIT} /></Link>
                                     <span className="name">{item.name}</span>
+                                    {isCategories && <Link to={'/locations?category=' + item.id} className="action filter hint--left" data-hint="Show locations for this category"><i className={iconsConstants.MAP} /></Link>}
                                 </li>
                             })
                         }
