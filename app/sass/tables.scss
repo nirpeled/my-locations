@@ -16,6 +16,16 @@ TABLES
         line-height: 50px;
         border-bottom: 1px solid $table-border-color;
 
+        &.category {
+            padding: 10px;
+            line-height: 20px;
+            text-transform: uppercase;
+            background-color: $gray;
+            color: $white;
+            font-size: 14px;
+            font-weight: 200;
+        }
+
         &:last-child {
             border-bottom: none;
         }

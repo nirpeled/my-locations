@@ -128,6 +128,39 @@ var HomepageContainer = React.createClass({
                 );
             }
 
+            if (isLocations && _.get(props, 'locations.groupByCategory')) {
+
+                return (
+                    <section className="box-row box-homepage">
+
+                        {
+                            _.map(_.orderBy(categories, 'name', sorting), (category, index) => {
+
+                                return (
+                                    <ul key={category.id} className="table">
+                                        <li className="category">{category.name}</li>
+
+                                        {
+                                            _.map(_.filter(sortedItems, ['category', category.id]), (item, index) => {
+                                                return <li key={item.id}>
+                                                    <Link to={'/' + page + '/' + item.id + '/delete'} className="action delete hint--right" data-hint="Delete"><i className={iconsConstants.DELETE} /></Link>
+                                                    <Link to={'/' + page + '/' + item.id + '/edit'} className="action edit hint--left" data-hint="Edit"><i className={iconsConstants.EDIT} /></Link>
+                                                    <span className="name">{item.name}</span>
+                                                </li>
+                                            })
+
+                                        }
+
+                                    </ul>
+                                )
+
+                            })
+                        }
+
+                    </section>
+                );
+            }
+
             return (
                 <section className="box-row box-homepage">
 

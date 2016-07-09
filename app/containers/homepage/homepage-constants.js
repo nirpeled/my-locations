@@ -4,6 +4,7 @@ export default {
     ADD: 'ADD',
     EDIT: 'EDIT',
     REMOVE: 'REMOVE',
-    SORT: 'SORT'
+    SORT: 'SORT',
+    GROUP_BY_CATEGORY: 'GROUP_BY_CATEGORY'
 
 }

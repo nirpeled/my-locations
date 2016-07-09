@@ -57,3 +57,15 @@ export function sort(page, sorting) {
     }
 
 }
+
+export function groupByCategory(page, groupByCategory) {
+
+    helpers.logger('[HomepageActions] groupByCategory');
+
+    return {
+        type: homepageConstants.GROUP_BY_CATEGORY,
+        page,
+        groupByCategory
+    }
+
+}

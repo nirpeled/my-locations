@@ -30,7 +30,6 @@ npm run dev // production mode is not stable at the moment
 
 ### TODO / WIP
 
-* Add group by category option for locations
 * Add filter by category option for locations
 * Add show actual map for locations
 * Add mobile vibration on location click

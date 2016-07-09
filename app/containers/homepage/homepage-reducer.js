@@ -69,6 +69,18 @@ export default function homepage(state = {}, action = {}) {
 
             return store;
 
+        case homepageConstants.GROUP_BY_CATEGORY:
+
+            helpers.logger('[HomepageReducer] ' + action.type);
+
+            data = _.assign({}, state[action.page]);
+            data.groupByCategory = action.groupByCategory;
+            store = _.assign({}, state, {[action.page]: data});
+
+            helpers.localStorage.set(localStorageName, store);
+
+            return store;
+
         default:
 
             return state;

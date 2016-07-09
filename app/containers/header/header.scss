@@ -51,7 +51,8 @@ body > header {
                 transition: all 300ms ease;
                 display: inline-block;
 
-                &:hover {
+                &:hover,
+                &.active {
                     background: $blue;
                     color: $white;
                 }
