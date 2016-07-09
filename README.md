@@ -23,6 +23,7 @@ npm run dev // production mode is not stable at the moment
 * React Router
 * Node.js with Express
 * Webpack
+* Hot Loader
 * Babel (ES6 support)
 * lodash
 * FontAwesome
@@ -30,10 +31,11 @@ npm run dev // production mode is not stable at the moment
 
 ### TODO / WIP
 
-* Add mobile vibration on location click
-* Allow selecting location coordinates using google maps API
-* Allow multi selection of categories for a location
-* Write tests using mocha.js
-* Add some documentation (JSDOC)
-* Clean up code (separate into smaller components, use helpers, clean SCSS)
-* Improve UI/UX
+* Mobile - Add mobile support (touch) and make it responsive
+* Mobile - Add mobile vibration on location click
+* Feature - Allow selecting location coordinates using google maps API
+* Feature - Allow multi selection of categories for a location (use react select multi)
+* Tests - Write tests using mocha.js
+* Code - Add some documentation (use jsdoc)
+* Code - Clean up code (separate into smaller components, use helpers, clean SCSS)
+* Design - Improve UI/UX
