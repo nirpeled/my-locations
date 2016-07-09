@@ -11,12 +11,14 @@ var ActionEdit = React.createClass({
 
     getInitialState: function() {
 
-        var props = this.props;
-        
-        return {
-            name: _.get(props, 'item.name'),
-            error: false
-        }
+        var props = this.props,
+            state = {error: false};
+
+        _.each(props.fields, (field) => {
+            state[field] = _.get(props, ['item', field])
+        });
+
+        return state;
 
     },
 
@@ -38,15 +40,21 @@ var ActionEdit = React.createClass({
             state = this.state,
             item = {};
 
-        item.id = props.item.id;
-        item.name = state.name;
+        _.each(props.fields, (field) => {
 
-        if (!item.name) {
-            this.setState({error: 'name'});
-            return;
+            if (!state[field]) {
+                this.setState({error: field});
+                return false;
+            } else {
+                item[field] = state[field];
+            }
+
+        });
+
+        if (_.size(item) == _.size(props.fields)) {
+            item.id = props.item.id;
+            props.handleSave(props.page, item);
         }
-
-        props.handleSave(props.page, item);
 
     },
 
@@ -61,7 +69,18 @@ var ActionEdit = React.createClass({
             <div className="modal">
 
                 <h1>Edit <strong>{props.item.name}</strong></h1>
-                <input type="text" value={state.name} name="name" className={classNames('inp inp-large full-width', {'with-error': (state.error === 'name')})} placeholder="Name" onChange={this.handleInputChange} />
+                {
+                    _.map(props.fields, (field, index) => {
+
+                        if (field === 'category') {
+                            return <input key={index} type="text" value={state[field]} name={field} className={classNames('inp inp-large full-width', {'with-error': (state.error === field)})} placeholder={_.capitalize(field)} onChange={this.handleInputChange} />
+                        } else {
+                            return <input key={index} type="text" value={state[field]} name={field} className={classNames('inp inp-large full-width', {'with-error': (state.error === field)})} placeholder={_.capitalize(field)} onChange={this.handleInputChange} />
+                        }
+
+                    })
+
+                }
                 <button className="btn full-width" onClick={this.handleSave}><i className={iconsConstants.SAVE} /> Save</button>
                 <Link to={'/' + props.page} className="without-style">Cancel</Link>
 

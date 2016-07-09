@@ -11,10 +11,14 @@ var ActionNew = React.createClass({
 
     getInitialState: function() {
 
-        return {
-            name: '',
-            error: false
-        }
+        var props = this.props,
+            state = {error: false};
+
+        _.each(props.fields, (field) => {
+            state[field] = ''
+        });
+
+        return state;
 
     },
 
@@ -36,15 +40,21 @@ var ActionNew = React.createClass({
             state = this.state,
             item = {};
 
-        item.name = state.name;
-        
-        if (!item.name) {
-            this.setState({error: 'name'});
-            return;
+        _.each(props.fields, (field) => {
+
+            if (!state[field]) {
+                this.setState({error: field});
+                return false;
+            } else {
+                item[field] = state[field];
+            }
+
+        });
+
+        if (_.size(item) == _.size(props.fields)) {
+            props.handleSave(props.page, item);
         }
         
-        props.handleSave(props.page, item);
-
     },
 
     render: function () {
@@ -70,7 +80,18 @@ var ActionNew = React.createClass({
             <div className="modal">
 
                 <h1>Add a new {label}</h1>
-                <input type="text" value={state.name} name="name" className={classNames('inp inp-large full-width', {'with-error': (state.error === 'name')})} placeholder="Name" onChange={this.handleInputChange} />
+                {
+                    _.map(props.fields, (field, index) => {
+
+                        if (field === 'category') {
+                            return <input key={index} type="text" value={state[field]} name={field} className={classNames('inp inp-large full-width', {'with-error': (state.error === field)})} placeholder={_.capitalize(field)} onChange={this.handleInputChange} />
+                        } else {
+                            return <input key={index} type="text" value={state[field]} name={field} className={classNames('inp inp-large full-width', {'with-error': (state.error === field)})} placeholder={_.capitalize(field)} onChange={this.handleInputChange} />
+                        }
+
+                    })
+
+                }
                 <button className="btn full-width" onClick={this.handleSave}><i className={iconsConstants.ADD} /> Add</button>
                 <Link to={'/' + props.page} className="without-style">Cancel</Link>
 

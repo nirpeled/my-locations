@@ -77,8 +77,12 @@ var HomepageContainer = React.createClass({
             isLocations = (page === 'locations'),
             items = _.get(props, [page, 'items']),
             sortedItems = _.orderBy(items, ['name']),
-            actionProps = {};
-
+            actionProps = {},
+            fields = {
+                categories: ['name'],
+                locations: ['name', 'address', 'coordinates', 'category']
+            };
+        
         if (state.isLoading) {
             return (
                 <section className="box-row box-homepage">
@@ -93,6 +97,7 @@ var HomepageContainer = React.createClass({
 
         if (props.children) {
 
+            actionProps.fields = fields[page];
             actionProps.item = params.id ? items[params.id] : null;
             actionProps.page = page;
             actionProps.handleSave = this.handleSave;
