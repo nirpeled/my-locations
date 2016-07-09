@@ -7,9 +7,6 @@ import helpers from '../../helpers/helpers.js';
 // constants
 import iconsConstants from '../../constants/icons-constants.js';
 
-// actions
-import * as categoriesActions from '../categories/categories-actions.js';
-
 var HeaderContainer = React.createClass({
 
     getInitialState: function() {
@@ -20,24 +17,24 @@ var HeaderContainer = React.createClass({
 
     },
 
-    toggleSort: function(e) {
-
-        e.preventDefault();
-        
-        var props = this.props,
-            state = this.state,
-            location = _.get(props, 'location.pathname'),
-            isCategories = (location === '/categories'),
-            isLocations = (location === '/locations'),
-            sorting = (state.sorting === 'asc') ? 'desc' : 'asc';
-
-        this.setState({sorting});
-
-        if (isCategories) {
-            props.dispatch(categoriesActions.setSorting(sorting));
-        }
-        
-    },
+    // toggleSort: function(e) {
+    //
+    //     e.preventDefault();
+    //
+    //     var props = this.props,
+    //         state = this.state,
+    //         location = _.get(props, 'location.pathname'),
+    //         isCategories = (location === '/categories'),
+    //         isLocations = (location === '/locations'),
+    //         sorting = (state.sorting === 'asc') ? 'desc' : 'asc';
+    //
+    //     this.setState({sorting});
+    //
+    //     if (isCategories) {
+    //         props.dispatch(categoriesActions.setSorting(sorting));
+    //     }
+    //
+    // },
 
     render: function () {
 
@@ -68,7 +65,7 @@ var HeaderContainer = React.createClass({
 
 function mapStateToProps(state) {
     return {
-        categories: _.get(state, 'categories')
+        categories: _.get(state, 'homepage.categories')
     };
 }
 

@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
 
-import categories from '../categories/categories-reducer.js';
-import locations from '../locations/locations-reducer.js';
+import homepage from '../homepage/homepage-reducer.js';
 
 const rootReducer = combineReducers({
-    categories,
-    locations
+    homepage
 });
 
 export default rootReducer;

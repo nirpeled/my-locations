@@ -30,7 +30,7 @@ npm run dev // production mode is not stable at the moment
 
 ### TODO / WIP
 
-* Merge between categories and locations containers
+* Add full fields for locations
 * Add sorting options for both categories and locations
 * Add group by category option for locations
 * Add filter by category option for locations

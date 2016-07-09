@@ -3,21 +3,18 @@ import { Route, IndexRoute } from 'react-router';
 
 import RootContainer from './containers/root/root-container.js';
 import HomepageContainer from './containers/homepage/homepage-container.js';
-import CategoriesContainer from './containers/categories/categories-container.js';
-import LocationsContainer from './containers/locations/locations-container.js';
+import ActionNew from './components/actions/action-new.js';
+import ActionDelete from './components/actions/action-delete.js';
+import ActionEdit from './components/actions/action-edit.js';
 
 export default (
-    <Route path="/" component={RootContainer}>
-        <IndexRoute component={HomepageContainer}/>
-        <Route path="categories" component={CategoriesContainer}>
-            <Route path="new" component={CategoriesContainer}/>
-            <Route path=":id/delete" component={CategoriesContainer}/>
-            <Route path=":id/edit" component={CategoriesContainer}/>
-        </Route>
-        <Route path="locations" component={LocationsContainer}>
-            <Route path="new" component={LocationsContainer}/>
-            <Route path=":id/delete" component={LocationsContainer}/>
-            <Route path=":id/edit" component={LocationsContainer}/>
+    <Route component={RootContainer}>
+        <Route path="/" component={HomepageContainer}>
+            <Route path=":page">
+                <Route path="new" component={ActionNew}/>
+                <Route path=":id/delete" component={ActionDelete}/>
+                <Route path=":id/edit" component={ActionEdit}/>
+            </Route>
         </Route>
     </Route>
 );
