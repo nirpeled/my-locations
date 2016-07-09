@@ -1,6 +1,6 @@
 # My Locations
 
-![version](https://img.shields.io/badge/version-0.1.0-green.svg)
+![version](https://img.shields.io/badge/version-0.2.0-green.svg)
 
 My Locations is a web app that allows a user to manage locations
 
@@ -29,3 +29,15 @@ npm run dev // production mode is not stable at the moment
 * SCSS
 
 ### TODO / WIP
+
+* Merge between categories and locations containers
+* Add sorting options for both categories and locations
+* Add group by category option for locations
+* Add filter by category option for locations
+* Add show actual map for locations
+* Add mobile vibration on location click
+* Allow selecting location coordinates using a map service
+* Allow multi selection of categories for a location
+* Improve UI/UX
+* Write tests
+* Cleanup code
