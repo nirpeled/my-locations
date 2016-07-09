@@ -46,12 +46,13 @@ export function remove(page, itemId) {
 
 }
 
-export function sort(sorting) {
+export function sort(page, sorting) {
 
     helpers.logger('[HomepageActions] sort');
 
     return {
         type: homepageConstants.SORT,
+        page,
         sorting
     }
 

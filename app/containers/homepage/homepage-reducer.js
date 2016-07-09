@@ -59,13 +59,15 @@ export default function homepage(state = {}, action = {}) {
 
         case homepageConstants.SORT:
 
-            // helpers.logger('[HomepageReducer] ' + action.type);
-            //
-            // data = {sorting: action.sorting};
-            //
-            // helpers.localStorage.set('categories-settings', data);
-            //
-            // return _.assign({}, state, data);
+            helpers.logger('[HomepageReducer] ' + action.type);
+
+            data = _.assign({}, state[action.page]);
+            data.sorting = action.sorting;
+            store = _.assign({}, state, {[action.page]: data});
+
+            helpers.localStorage.set(localStorageName, store);
+
+            return store;
 
         default:
 
