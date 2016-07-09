@@ -7,6 +7,7 @@ export default {
     EDIT: 'fa fa-pencil',
     SAVE: 'fa fa-floppy-o',
     SORT_ASC: 'fa fa-sort-alpha-asc',
-    SORT_DESC: 'fa fa-sort-alpha-desc'
+    SORT_DESC: 'fa fa-sort-alpha-desc',
+    OPEN: 'fa fa-external-link'
 
 }

@@ -148,6 +148,7 @@ var HomepageContainer = React.createClass({
                                                     <Link to={'/' + page + '/' + item.id + '/delete'} className="action delete hint--right" data-hint="Delete"><i className={iconsConstants.DELETE} /></Link>
                                                     <Link to={'/' + page + '/' + item.id + '/edit'} className="action edit hint--left" data-hint="Edit"><i className={iconsConstants.EDIT} /></Link>
                                                     <span className="name">{item.name}</span>
+                                                    <a target="_blank" href={'https://www.google.com/maps/place/' + _.words(item.name).join('+')} className="action open hint--left" data-hint="Show location on Google Maps"><i className={iconsConstants.OPEN} /></a>
                                                 </li>
                                             })
 
@@ -175,6 +176,7 @@ var HomepageContainer = React.createClass({
                                     <Link to={'/' + page + '/' + item.id + '/edit'} className="action edit hint--left" data-hint="Edit"><i className={iconsConstants.EDIT} /></Link>
                                     <span className="name">{item.name}</span>
                                     {isCategories && <Link to={'/locations?category=' + item.id} className="action filter hint--left" data-hint="Show locations for this category"><i className={iconsConstants.MAP} /></Link>}
+                                    {isLocations && <a target="_blank" href={'https://www.google.com/maps/place/' + _.words(item.name).join('+')} className="action open hint--left" data-hint="Show location on Google Maps"><i className={iconsConstants.OPEN} /></a>}
                                 </li>
                             })
                         }

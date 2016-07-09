@@ -58,7 +58,8 @@ TABLES
                 right: 50px;
             }
 
-            &.filter {
+            &.filter,
+            &.open {
                 right: 100px;
             }
 
@@ -70,7 +71,8 @@ TABLES
                 }
 
                 &.edit,
-                &.filter {
+                &.filter,
+                &.open {
                     background: $blue;
                 }
             }
