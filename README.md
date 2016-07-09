@@ -36,5 +36,6 @@ npm run dev // production mode is not stable at the moment
 * Allow selecting location coordinates using a map service
 * Allow multi selection of categories for a location
 * Improve UI/UX
-* Write tests
+* Write tests tests tests
+* Add some documentation (JSDOC)
 * Cleanup code
