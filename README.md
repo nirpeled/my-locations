@@ -31,9 +31,9 @@ npm run dev // production mode is not stable at the moment
 ### TODO / WIP
 
 * Add mobile vibration on location click
-* Allow selecting location coordinates using a map service
+* Allow selecting location coordinates using google maps API
 * Allow multi selection of categories for a location
-* Improve UI/UX
-* Write tests tests tests
+* Write tests using mocha.js
 * Add some documentation (JSDOC)
-* Cleanup code
+* Clean up code (separate into smaller components, use helpers, clean SCSS)
+* Improve UI/UX
