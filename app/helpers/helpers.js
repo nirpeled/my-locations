@@ -1,9 +1,7 @@
 import logger from './logger.js';
 import safeStringify from './safe-stringify.js';
 import localStorage from './local-storage.js';
-import parseNumber from './parse-number.js';
-import parseDigit from './parse-digit.js';
-import downloadFile from './download-file.js';
+import vibrate from './vibrate.js';
 
 class Helpers {
 
@@ -11,10 +9,9 @@ class Helpers {
         this.logger = logger;
         this.safeStringify = safeStringify;
         this.localStorage = localStorage;
-        this.parseNumber = parseNumber;
-        this.parseDigit = parseDigit;
-        this.downloadFile = downloadFile;
+        this.vibrate = vibrate;
     }
+    
 }
 
 const helpers = new Helpers();
