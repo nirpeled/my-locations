@@ -102,6 +102,7 @@ var HomepageContainer = React.createClass({
             actionProps.page = page;
             actionProps.handleSave = this.handleSave;
             actionProps.handleDelete = this.handleDelete;
+            actionProps.categories = _.map(_.orderBy(categories, ['name']), (category) => {return {value: category.id, label: category.name}});
 
             return(
                 <section className="box-row box-homepage">

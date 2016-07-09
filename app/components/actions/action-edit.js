@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import helpers from '../../helpers/helpers.js';
 import classNames from 'classnames';
+import Select from 'react-select';
 
 // constants
 import iconsConstants from '../../constants/icons-constants.js';
@@ -29,6 +30,15 @@ var ActionEdit = React.createClass({
 
         this.setState({
             [key]: value,
+            error: false
+        });
+
+    },
+
+    handleSelectChange: function (category) {
+
+        this.setState({
+            category: category.value,
             error: false
         });
 
@@ -73,7 +83,7 @@ var ActionEdit = React.createClass({
                     _.map(props.fields, (field, index) => {
 
                         if (field === 'category') {
-                            return <input key={index} type="text" value={state[field]} name={field} className={classNames('inp inp-large full-width', {'with-error': (state.error === field)})} placeholder={_.capitalize(field)} onChange={this.handleInputChange} />
+                            return <Select key={index} autosize={false} clearable={false} name="category" value={state.category} options={props.categories} onChange={this.handleSelectChange} />
                         } else {
                             return <input key={index} type="text" value={state[field]} name={field} className={classNames('inp inp-large full-width', {'with-error': (state.error === field)})} placeholder={_.capitalize(field)} onChange={this.handleInputChange} />
                         }
