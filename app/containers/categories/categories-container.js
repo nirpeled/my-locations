@@ -202,7 +202,8 @@ var CategoriesContainer = React.createClass({
 
 function mapStateToProps(state) {
     return {
-        categories: _.get(state, 'categories')
+        categories: _.get(state, 'categories'),
+        locations: _.get(state, 'locations')
     };
 }
 

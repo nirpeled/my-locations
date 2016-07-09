@@ -22,6 +22,9 @@ var LocationsContainer = React.createClass({
         return {
             isLoading: true,
             formName: '',
+            formAddress: '',
+            formCoordinates: '',
+            formCategory: '',
             formError: false
         }
 
@@ -62,9 +65,9 @@ var LocationsContainer = React.createClass({
         }
 
         if (id) {
-            props.dispatch(locationsActions.editCategory({id, name: state.formName}));
+            props.dispatch(locationsActions.editLocation({id, name: state.formName}));
         } else {
-            props.dispatch(locationsActions.addCategory({name: state.formName}));
+            props.dispatch(locationsActions.addLocation({name: state.formName}));
         }
 
         this.setState({
@@ -82,7 +85,7 @@ var LocationsContainer = React.createClass({
 
         var props = this.props;
 
-        props.dispatch(locationsActions.deleteCategory(id));
+        props.dispatch(locationsActions.deleteLocation(id));
 
         this.context.router.push('/locations');
 
@@ -122,7 +125,10 @@ var LocationsContainer = React.createClass({
                     <div className="modal">
 
                         <h1>Add a new location</h1>
-                        <input type="text" value={state.formName} name="formName" className={classNames('inp inp-large full-width', {'with-error': (state.formError === 'formName')})} placeholder="Category name" onChange={this.handleInputChange} />
+                        <input type="text" value={state.formName} name="formName" className={classNames('inp inp-large full-width', {'with-error': (state.formError === 'formName')})} placeholder="Location name" onChange={this.handleInputChange} />
+                        <input type="text" value={state.formAddress} name="formAddress" className={classNames('inp inp-large full-width', {'with-error': (state.formError === 'formAddress')})} placeholder="Location address" onChange={this.handleInputChange} />
+                        <input type="text" value={state.formCoordinates} name="formCoordinates" className={classNames('inp inp-large full-width', {'with-error': (state.formError === 'formCoordinates')})} placeholder="Location coordinates" onChange={this.handleInputChange} />
+                        <input type="text" value={state.formCategory} name="formCategory" className={classNames('inp inp-large full-width', {'with-error': (state.formError === 'formCategory')})} placeholder="Location category" onChange={this.handleInputChange} />
                         <button className="btn full-width" onClick={() => this.handleSave(null)}><i className={iconsConstants.ADD} /> Add</button>
                         <Link to="/locations" className="without-style">Cancel</Link>
 
@@ -202,6 +208,7 @@ var LocationsContainer = React.createClass({
 
 function mapStateToProps(state) {
     return {
+        categories: _.get(state, 'categories'),
         locations: _.get(state, 'locations')
     };
 }
